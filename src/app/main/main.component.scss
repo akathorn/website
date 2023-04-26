@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+}
+
+.box {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 2rem;
+  border: 2px dashed #3f3f3f;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+
+  &:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+}
+
+.presentation,
+.ideals,
+.hobbies,
+.bio,
+.contact {
+  margin-bottom: 2rem;
+}
+
+.presentation p,
+.ideals,
+.hobbies,
+.bio div {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.contact {
+  font-size: 1.1rem;
+
+  .email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.r-q {
+  color: #e74c3c; // red
+}
+
+.r-u {
+  color: #f39c12; // orange
+}
+
+.r-e1 {
+  color: #f1c40f; // yellow
+}
+
+.r-e2 {
+  color: #2ecc71; // green
+}
+
+.r-r {
+  color: #3498db; // blue
+}
