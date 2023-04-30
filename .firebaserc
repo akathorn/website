@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "daniel-espino-codes": {
+      "hosting": {
+        "website": [
+          "daniel-espino-codes"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "daniel-espino-codes"
+  }
+}

@@ -1,0 +1,12 @@
+export const environment = {
+  firebase: {
+    projectId: 'daniel-espino-codes',
+    appId: '1:917040968828:web:7b70d370b9bb97d4c545f9',
+    storageBucket: 'daniel-espino-codes.appspot.com',
+    apiKey: 'AIzaSyDbCQC5RbMBJoNvIERHhI3Nslt3--yVA0c',
+    authDomain: 'daniel-espino-codes.firebaseapp.com',
+    messagingSenderId: '917040968828',
+    measurementId: 'G-9EGJREF117',
+  },
+  emailSignInURL: 'http://localhost:4200/signInWithEmail',
+};

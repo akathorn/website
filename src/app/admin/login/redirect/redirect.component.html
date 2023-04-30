@@ -1,0 +1,6 @@
+<div *ngIf="user$ | async">
+    <p>Signed in!</p>
+</div>
+<div *ngIf="!(user$ | async)">
+    <p>Some problem occurred</p>
+</div>

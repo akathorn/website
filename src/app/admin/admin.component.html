@@ -1,0 +1,7 @@
+<p>admin works!</p>
+<div *ngIf="user$ | async">
+    <p>Signed in!</p>
+</div>
+<div *ngIf="!(user$ | async)">
+    <p>Not signed in!</p>
+</div>
