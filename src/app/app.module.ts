@@ -23,9 +23,10 @@ import { LoginComponent } from './admin/login/login.component';
 import { RedirectComponent } from './admin/login/redirect/redirect.component';
 import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './blog/blog/blog.component';
+import { PostComponent } from './blog/post/post.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, LoginComponent, RedirectComponent, AdminComponent, BlogComponent],
+  declarations: [AppComponent, MainComponent, LoginComponent, RedirectComponent, AdminComponent, BlogComponent, PostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

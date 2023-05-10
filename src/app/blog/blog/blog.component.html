@@ -1,4 +1,3 @@
-<h1>This is certainly a blog</h1>
 <div *ngFor="let post of posts$ | async">
-    <p>{{post | json}}</p>
+    <app-post [post]="post"></app-post>
 </div>

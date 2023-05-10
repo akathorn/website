@@ -1,0 +1,9 @@
+<div class="post">
+    <h2 class="title">{{post.title}}</h2>
+    <h3 class="subtitle">{{post.subtitle}}</h3>
+    <p class="date">{{this.post.published_date.toDate() | date}}</p>
+    <p class="content">{{post.content}}</p>
+    <div class="tags">
+        <span class="tag" *ngFor="let tag of post.tags">{{tag}}</span>
+    </div>
+</div>

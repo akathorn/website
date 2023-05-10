@@ -21,6 +21,6 @@ export class PostsService {
       this.firestore,
       `/users/${environment.authorId}/posts`
     ) as CollectionReference<Post>;
-    this.posts$ = collectionData(this.postsCollection);
+    this.posts$ = collectionData(this.postsCollection, { idField: 'id' });
   }
 }
