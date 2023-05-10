@@ -11,7 +11,13 @@ import { AuthService } from '../services/auth.service';
 export class AdminComponent {
   user$: Observable<User | null>;
 
-  constructor(auth: AuthService) {
-    this.user$ = auth.user$;
+  constructor(private auth: AuthService) {
+    this.user$ = this.auth.user$;
+  }
+
+  signOut() {
+    this.auth.signOut().subscribe(() => {
+      console.log('Logged out');
+    });
   }
 }
