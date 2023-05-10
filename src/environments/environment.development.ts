@@ -9,4 +9,5 @@ export const environment = {
     measurementId: 'G-9EGJREF117',
   },
   emailSignInURL: 'http://localhost:4200/signInWithEmail',
+  authorId: 'VazInX34YLYk2v7OXKfqK1WI6oj2',
 };

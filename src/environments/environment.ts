@@ -9,4 +9,5 @@ export const environment = {
     measurementId: 'G-9EGJREF117',
   },
   emailSignInURL: 'https://daniel-espino-codes.web.app/signInWithEmail',
+  authorId: 'VazInX34YLYk2v7OXKfqK1WI6oj2',
 };
