@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { PostsService } from '../services/blog/posts.service';
 

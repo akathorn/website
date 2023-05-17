@@ -1,3 +1,18 @@
+.editor {
+  form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  padding: 20px;
+}
+
 .preview {
   border: 2px dashed #ccc;
   margin: 10px;

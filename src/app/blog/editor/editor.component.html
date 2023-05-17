@@ -2,9 +2,27 @@
     Draft not found
 </div>
 
-<div class="preview">
-    <h1>Preview</h1>
-    <ng-container *ngIf="draft">
+<ng-container *ngIf="draft">
+    <div class="editor">
+        <h1>Editor</h1>
+        <form [formGroup]="editorForm">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Subtitle</mat-label>
+                <input matInput formControlName="subtitle" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Content</mat-label>
+                <textarea matInput formControlName="content" cdkTextareaAutosize required></textarea>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div class="preview">
+        <h1>Preview</h1>
         <app-post [post]="draft"></app-post>
-    </ng-container>
-</div>
+    </div>
+</ng-container>

@@ -58,4 +58,9 @@ export class PostsService {
       mergeMap(() => from(setDoc(draftRef, draft)))
     );
   }
+
+  updateDraft(id: string, data: Partial<PostData>): Observable<void> {
+    let draftRef = doc(this.draftsCollection, id);
+    return from(setDoc(draftRef, data, { merge: true }));
+  }
 }
