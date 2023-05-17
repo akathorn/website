@@ -18,6 +18,11 @@
                 <mat-label>Content</mat-label>
                 <textarea matInput formControlName="content" cdkTextareaAutosize required></textarea>
             </mat-form-field>
+            <mat-form-field>
+                <mat-label>Published date</mat-label>
+                <input matInput formControlName="published_date" type="datetime-local" placeholder="Published date"
+                    (click)="openDateDialog($event)">
+            </mat-form-field>
         </form>
     </div>
 

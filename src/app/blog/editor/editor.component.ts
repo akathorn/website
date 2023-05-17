@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, mergeMap } from 'rxjs';
@@ -19,7 +20,7 @@ export class EditorComponent implements OnDestroy, OnInit {
     title: new FormControl(''),
     subtitle: new FormControl(''),
     content: new FormControl(''),
-    // published_date: new FormControl(new Date()),
+    published_date: new FormControl(''),
     // tags: new FormControl([]),
   });
   formLoaded = false;
@@ -43,8 +44,15 @@ export class EditorComponent implements OnDestroy, OnInit {
       .subscribe((draft) => {
         this.draft = draft;
         if (!this.formLoaded) {
+          // Format the date as `yyyy-MM-ddThh:mm`
+          let publishedDate = draft.published_date?.toDate().toISOString();
+          // Remove the Z at the end of the string
+          publishedDate = publishedDate?.substring(0, publishedDate.length - 1);
           this.editorForm.patchValue({
-            ...draft,
+            title: draft.title,
+            subtitle: draft.subtitle,
+            content: draft.content,
+            published_date: publishedDate,
           });
           this.formLoaded = true;
         }
@@ -52,10 +60,18 @@ export class EditorComponent implements OnDestroy, OnInit {
     this.editorSubscription = this.editorForm.valueChanges
       .pipe(
         map((value) => {
+          let publishedDate = value.published_date
+            ? new Date(value.published_date)
+            : new Date();
+          let publishedTimestamp = new Timestamp(
+            publishedDate.getTime() / 1000,
+            0
+          );
           return {
             title: value.title ?? '',
             subtitle: value.subtitle ?? '',
             content: value.content ?? '',
+            published_date: publishedTimestamp,
           };
         }),
         mergeMap((value) =>
@@ -68,5 +84,12 @@ export class EditorComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.draftSubscription?.unsubscribe();
     this.editorSubscription?.unsubscribe();
+  }
+
+  openDateDialog(event: any): void {
+    event.preventDefault();
+    event.stopPropagation();
+    // Get the input element that triggered the event
+    event.target.showPicker();
   }
 }

@@ -27,7 +27,16 @@ import { PostComponent } from './blog/post/post.component';
 import { EditorComponent } from './blog/editor/editor.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, LoginComponent, RedirectComponent, AdminComponent, BlogComponent, PostComponent, EditorComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    LoginComponent,
+    RedirectComponent,
+    AdminComponent,
+    BlogComponent,
+    PostComponent,
+    EditorComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
