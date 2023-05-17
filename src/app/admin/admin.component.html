@@ -1,6 +1,18 @@
 <div *ngIf="user$ | async">
     <p>Signed in!</p>
     <button mat-raised-button color="primary" (click)="signOut()">Logout</button>
+
+    <button mat-raised-button color="primary" (click)="createDraft()">Create Post</button>
+
+    <h2>Drafts</h2>
+    <p *ngFor="let draft of drafts$ | async">
+        <a [routerLink]="['/admin', 'draft', draft.id]">{{draft.title || "[untitled]"}} - {{draft.id}}</a>
+    </p>
+    <h2>Published posts</h2>
+    <p *ngFor="let post of posts$ | async">
+        <a [routerLink]="['/blog', post.id]">{{post.title || "[untitled]"}} - {{post.id}}</a>
+    </p>
+
 </div>
 <div *ngIf="!(user$ | async)">
     <p>Not signed in!</p>

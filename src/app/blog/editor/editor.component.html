@@ -1,0 +1,10 @@
+<div *ngIf="!draft">
+    Draft not found
+</div>
+
+<div class="preview">
+    <h1>Preview</h1>
+    <ng-container *ngIf="draft">
+        <app-post [post]="draft"></app-post>
+    </ng-container>
+</div>
