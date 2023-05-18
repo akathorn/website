@@ -16,12 +16,13 @@ export class EditorComponent implements OnDestroy, OnInit {
   private draftSubscription?: Subscription;
   private editorSubscription?: Subscription;
 
+  tags: string[] = [];
+
   editorForm = new FormGroup({
     title: new FormControl(''),
     subtitle: new FormControl(''),
     content: new FormControl(''),
     published_date: new FormControl(''),
-    // tags: new FormControl([]),
   });
   formLoaded = false;
 
@@ -32,6 +33,8 @@ export class EditorComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Loads the draft from the database, and sets the form values to the draft's values if the form
+    // hasn't been loaded yet
     this.draftSubscription = this.activatedRoute.params
       .pipe(
         mergeMap((params) => this.postsService.getDraft(params['id'])),
@@ -45,7 +48,7 @@ export class EditorComponent implements OnDestroy, OnInit {
       .subscribe((draft) => {
         this.draft = draft;
         if (!this.formLoaded) {
-          // Format the date as `yyyy-MM-ddThh:mm`
+          // Format the date as `yyyy-MM-ddThh:mmZ`
           let publishedDate = draft.published_date?.toDate().toISOString();
           // Remove the Z at the end of the string
           publishedDate = publishedDate?.substring(0, publishedDate.length - 1);
@@ -56,8 +59,10 @@ export class EditorComponent implements OnDestroy, OnInit {
             published_date: publishedDate,
           });
           this.formLoaded = true;
+          this.tags = draft.tags;
         }
       });
+    // Subscribes to changes on the editor form, and updates the draft in the database
     this.editorSubscription = this.editorForm.valueChanges
       .pipe(
         map((value) => {
@@ -85,6 +90,12 @@ export class EditorComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.draftSubscription?.unsubscribe();
     this.editorSubscription?.unsubscribe();
+  }
+
+  tagsChange(tags: string[]): void {
+    console.log(tags);
+    this.tags = tags;
+    this.postsService.updateDraft(this.draft!.id, { tags }).subscribe();
   }
 
   openDateDialog(event: any): void {

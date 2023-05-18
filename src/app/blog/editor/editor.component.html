@@ -23,13 +23,16 @@
                 <input matInput formControlName="published_date" type="datetime-local" placeholder="Published date"
                     (click)="openDateDialog($event)">
             </mat-form-field>
+            <div class="tag-selector">
+                <app-tag-selector [tags]="tags" (tagsChange)="tagsChange($event)"></app-tag-selector>
+            </div>
         </form>
     </div>
     <div class="actions">
         <button mat-raised-button color="primary" (click)="deleteDraft()">Delete</button>
         <button mat-raised-button color="primary" (click)="publishDraft()">Publish</button>
+        <a [routerLink]="['/blog', draft.id]">View</a>
     </div>
-
     <div class="preview">
         <h1>Preview</h1>
         <app-post [post]="draft"></app-post>

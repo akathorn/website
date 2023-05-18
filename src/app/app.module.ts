@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -26,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
 import { EditorComponent } from './blog/editor/editor.component';
+import { TagSelectorComponent } from './blog/editor/tag-selector/tag-selector.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { EditorComponent } from './blog/editor/editor.component';
     BlogComponent,
     PostComponent,
     EditorComponent,
+    TagSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { EditorComponent } from './blog/editor/editor.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatChipsModule,
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
