@@ -92,6 +92,13 @@ export class PostsService {
     );
   }
 
+  getPost(id: string): Observable<Post | undefined> {
+    // Get draft from this.drafts$
+    return this.posts$.pipe(
+      map((posts) => posts.find((post) => post.id === id))
+    );
+  }
+
   deletePost(id: string): Observable<void> {
     let postRef = doc(this.postsCollection, id);
     return from(deleteDoc(postRef));

@@ -1,5 +1,6 @@
 <div class="post">
-    <h2 class="title">{{post.title || "Untitled"}}</h2>
+    <h2 class="title"><a [routerLink]="['/blog/post', post.id]">{{post.title ||
+            "Untitled"}} <mat-icon>link</mat-icon></a></h2>
     <h3 class="subtitle">{{post.subtitle}}</h3>
     <p class="date">{{this.post.published_date?.toDate() | date}}</p>
     <p class="content">{{post.content || "No content"}}</p>

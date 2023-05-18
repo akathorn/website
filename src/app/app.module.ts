@@ -28,6 +28,7 @@ import { BlogComponent } from './blog/blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
 import { EditorComponent } from './blog/editor/editor.component';
 import { TagSelectorComponent } from './blog/editor/tag-selector/tag-selector.component';
+import { PostViewComponent } from './blog/post-view/post-view.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TagSelectorComponent } from './blog/editor/tag-selector/tag-selector.co
     PostComponent,
     EditorComponent,
     TagSelectorComponent,
+    PostViewComponent,
   ],
   imports: [
     BrowserModule,

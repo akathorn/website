@@ -8,8 +8,4 @@ import { Post } from 'src/app/models/blog';
 })
 export class PostComponent {
   @Input() post!: Post;
-
-  // getDate() {
-  //   return new Date(this.post.published_date);
-  // }
 }
