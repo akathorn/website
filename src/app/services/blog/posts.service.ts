@@ -7,6 +7,8 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  orderBy,
+  query,
   setDoc,
 } from '@angular/fire/firestore';
 import { Observable, from, map, mergeMap } from 'rxjs';
@@ -27,12 +29,18 @@ export class PostsService {
       this.firestore,
       `/users/${environment.authorId}/posts`
     ) as CollectionReference<Post>;
-    this.posts$ = collectionData(this.postsCollection, { idField: 'id' });
+    this.posts$ = collectionData(
+      query(this.postsCollection, orderBy('published_date', 'desc')),
+      { idField: 'id' }
+    );
     this.draftsCollection = collection(
       this.firestore,
       `/users/${environment.authorId}/drafts`
     ) as CollectionReference<Post>;
-    this.drafts$ = collectionData(this.draftsCollection, { idField: 'id' });
+    this.drafts$ = collectionData(
+      query(this.draftsCollection, orderBy('published_date', 'desc')),
+      { idField: 'id' }
+    );
   }
 
   getDraft(id: string): Observable<Post | undefined> {

@@ -11,3 +11,12 @@ export type PostData = {
 export type Post = PostData & {
   id: string;
 };
+
+export type TagData = {
+  name: string;
+  description: string;
+};
+
+export type Tag = TagData & {
+  id: string;
+};

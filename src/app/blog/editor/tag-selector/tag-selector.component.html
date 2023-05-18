@@ -1,15 +1,4 @@
-<mat-form-field class="chips">
-    <mat-label>Tags</mat-label>
-    <mat-chip-grid #chipGrid aria-label="Enter tags">
-        <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)" [editable]="true" (edited)="edit(tag, $event)"
-            [aria-description]="'press enter to edit ' + tag">
-            {{tag}}
-            <button matChipRemove [attr.aria-label]="'remove ' + tag">
-                <mat-icon>cancel</mat-icon>
-            </button>
-        </mat-chip-row>
-        <input placeholder="New tag..." [matChipInputFor]="chipGrid"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
-            (matChipInputTokenEnd)="add($event)" />
-    </mat-chip-grid>
-</mat-form-field>
+<mat-chip-listbox aria-label="Fish selection" [multiple]="true">
+    <mat-chip-option *ngFor="let tag of allTags" (selectionChange)="chipChanged(tag, $event)"
+        [selected]="this.tags.indexOf(tag) !== -1">{{tag}}</mat-chip-option>
+</mat-chip-listbox>

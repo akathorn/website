@@ -2,9 +2,31 @@
     <p>Signed in!</p>
     <button mat-raised-button color="primary" (click)="signOut()">Logout</button>
 
-    <input mat-input placeholder="Draft id" [(ngModel)]="newDraftId">
-    <button mat-raised-button color="primary" (click)="createDraft()">Create Post</button>
+    <input matInput placeholder="Draft id" [(ngModel)]="newDraftId">
+    <button mat-raised-button color="primary" (click)="createDraft()">Create draft</button>
 
+    <h2>Tags</h2>
+    <p *ngFor="let tag of tags$ | async">
+        {{tag.id}} - {{tag.name}}: {{tag.description}}
+    </p>
+    <h3>Add tag</h3>
+    <div class="add-tag">
+        <form>
+            <mat-form-field>
+                <mat-label>Id</mat-label>
+                <input matInput name="id" placeholder="Tag id" [(ngModel)]="newTag.id">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput name="name" placeholder="Tag name" [(ngModel)]="newTag.name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <input matInput name="description" placeholder="Tag description" [(ngModel)]="newTag.description">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="createTag()">Create Tag</button>
+        </form>
+    </div>
     <h2>Drafts</h2>
     <p *ngFor="let draft of drafts$ | async">
         <a [routerLink]="['/admin', 'draft', draft.id]">{{draft.title || "[untitled]"}} - {{draft.id}}</a>
