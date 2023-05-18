@@ -11,6 +11,7 @@ export class AdminComponent {
   user$ = this.auth.user$;
   posts$ = this.postsService.posts$;
   drafts$ = this.postsService.drafts$;
+  newDraftId = '';
 
   constructor(private auth: AuthService, private postsService: PostsService) {}
 
@@ -21,7 +22,11 @@ export class AdminComponent {
   }
 
   createDraft() {
-    this.postsService.createDraft('bloouhhh').subscribe(() => {
+    if (this.newDraftId === '') {
+      console.log('Please enter a draft ID');
+      return;
+    }
+    this.postsService.createDraft(this.newDraftId).subscribe(() => {
       console.log('Draft created');
     });
   }

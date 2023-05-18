@@ -4,6 +4,7 @@ import {
   Firestore,
   collection,
   collectionData,
+  deleteDoc,
   doc,
   getDoc,
   setDoc,
@@ -62,5 +63,29 @@ export class PostsService {
   updateDraft(id: string, data: Partial<PostData>): Observable<void> {
     let draftRef = doc(this.draftsCollection, id);
     return from(setDoc(draftRef, data, { merge: true }));
+  }
+
+  deleteDraft(id: string): Observable<void> {
+    let draftRef = doc(this.draftsCollection, id);
+    return from(deleteDoc(draftRef));
+  }
+
+  publishDraft(id: string): Observable<void> {
+    let draftRef = doc(this.draftsCollection, id);
+    let postRef = doc(this.postsCollection, id);
+    return from(getDoc(draftRef)).pipe(
+      map((doc) => {
+        if (!doc.exists()) {
+          throw new Error('Draft does not exist');
+        }
+        return doc.data();
+      }),
+      mergeMap((data) => from(setDoc(postRef, data)))
+    );
+  }
+
+  deletePost(id: string): Observable<void> {
+    let postRef = doc(this.postsCollection, id);
+    return from(deleteDoc(postRef));
   }
 }

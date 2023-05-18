@@ -2,6 +2,7 @@
     <p>Signed in!</p>
     <button mat-raised-button color="primary" (click)="signOut()">Logout</button>
 
+    <input mat-input placeholder="Draft id" [(ngModel)]="newDraftId">
     <button mat-raised-button color="primary" (click)="createDraft()">Create Post</button>
 
     <h2>Drafts</h2>

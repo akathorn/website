@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map, mergeMap } from 'rxjs';
 import { Post } from 'src/app/models/blog';
 import { PostsService } from 'src/app/services/blog/posts.service';
@@ -27,6 +27,7 @@ export class EditorComponent implements OnDestroy, OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private postsService: PostsService
   ) {}
 
@@ -91,5 +92,27 @@ export class EditorComponent implements OnDestroy, OnInit {
     event.stopPropagation();
     // Get the input element that triggered the event
     event.target.showPicker();
+  }
+
+  deleteDraft(): void {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this post?'
+    );
+    if (shouldDelete) {
+      this.postsService
+        .deleteDraft(this.draft!.id)
+        .subscribe(() => this.router.navigate(['/admin']));
+    }
+  }
+
+  publishDraft() {
+    const shouldPublish = window.confirm(
+      'Are you sure you want to publish this post?'
+    );
+    if (shouldPublish) {
+      this.postsService
+        .publishDraft(this.draft!.id)
+        .subscribe(() => window.alert('Post published!'));
+    }
   }
 }
