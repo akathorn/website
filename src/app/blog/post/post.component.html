@@ -1,4 +1,4 @@
-<div class="post" [@fadeIn]="{ value: '', params: { time: fadeInTime } }">
+<div class="post" [@fadeInWithDelay]="{ value: '', params: { delay: fadeInDelay } }">
     <h2 class="title"><a [routerLink]="['/blog/post', post.id]">{{post.title ||
             "Untitled"}} <mat-icon>link</mat-icon></a></h2>
     <h3 class="subtitle">{{post.subtitle}}</h3>
