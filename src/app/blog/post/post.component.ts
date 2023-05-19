@@ -10,5 +10,5 @@ import { fadeInWithDelay } from '../../animations';
 })
 export class PostComponent {
   @Input() post!: Post;
-  @Input() fadeInDelay = 500;
+  @Input() fadeInDelay = 0;
 }

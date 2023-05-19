@@ -1,21 +1,69 @@
-import { Component } from '@angular/core';
-import { ChildrenOutletContexts } from '@angular/router';
-import { slideInAnimation } from './animations';
+import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { slideAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slideInAnimation],
+  animations: [slideAnimation],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Daniel Codes';
 
-  constructor(private contexts: ChildrenOutletContexts) {}
+  navigation: string = '';
+  private lastPop: number = 0;
+  private poppingDirection: string = '';
 
-  getRouteAnimationData() {
-    return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
-      'animation'
-    ];
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    // TODO: go through this again
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        if (event.id == 1) {
+          this.navigation = localStorage.getItem('navigation') || '';
+          this.lastPop = 100000;
+          this.poppingDirection =
+            localStorage.getItem('poppingDirection') || '';
+          return;
+        }
+
+        if (event.navigationTrigger !== 'popstate') {
+          this.navigation = 'forward';
+          this.lastPop = 0;
+          this.poppingDirection = '';
+          localStorage.setItem('navigation', this.navigation);
+          localStorage.setItem('poppingDirection', this.poppingDirection);
+          return;
+        }
+
+        console.log(event);
+
+        let currentPop = event.restoredState!.navigationId;
+        if (!this.poppingDirection) {
+          this.poppingDirection = 'backward';
+        } else if (
+          this.poppingDirection === 'backward' &&
+          currentPop > this.lastPop
+        ) {
+          this.poppingDirection = 'forward';
+        } else if (
+          this.poppingDirection === 'forward' &&
+          currentPop > this.lastPop
+        ) {
+          this.poppingDirection = 'backward';
+        }
+        this.lastPop = currentPop;
+        this.navigation = this.poppingDirection;
+
+        localStorage.setItem('navigation', this.navigation);
+        localStorage.setItem('poppingDirection', this.poppingDirection);
+      }
+    });
+  }
+
+  resetAnimationState() {
+    this.navigation = '';
   }
 }

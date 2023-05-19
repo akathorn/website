@@ -9,41 +9,13 @@ import { EditorComponent } from './blog/editor/editor.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainComponent,
-    data: { animation: 'main' },
-  },
-  {
-    path: 'blog',
-    component: BlogComponent,
-    data: { animation: 'blog' },
-  },
-  {
-    path: 'blog/post/:id',
-    component: PostViewComponent,
-    data: { animation: 'postView' },
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: { animation: 'login' },
-  },
-  {
-    path: 'signInWithEmail',
-    component: RedirectComponent,
-    data: { animation: 'signInWithEmail' },
-  },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    data: { animation: 'admin' },
-  },
-  {
-    path: 'admin/draft/:id',
-    component: EditorComponent,
-    data: { animation: 'editor' },
-  },
+  { path: '', component: MainComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/post/:id', component: PostViewComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signInWithEmail', component: RedirectComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/draft/:id', component: EditorComponent },
 ];
 
 @NgModule({

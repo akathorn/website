@@ -22,8 +22,31 @@ export const fadeInWithDelay = trigger('fadeInWithDelay', [
   ]),
 ]);
 
-export const slideInAnimation = trigger('routeAnimations', [
-  transition('main <=> blog', [
+export const slideAnimation = trigger('routeAnimations', [
+  transition('* => forward', [
+    style({ position: 'relative' }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ right: '-100%' })]),
+    query(':leave', animateChild(), { optional: true }),
+    group([
+      query(
+        ':leave',
+        [animate('500ms ease-in-out', style({ right: '100%' }))],
+        {
+          optional: true,
+        }
+      ),
+      query(':enter', [animate('500ms ease-in-out', style({ right: '0%' }))]),
+    ]),
+  ]),
+  transition('* => backward', [
     style({ position: 'relative' }),
     query(':enter, :leave', [
       style({
@@ -34,9 +57,11 @@ export const slideInAnimation = trigger('routeAnimations', [
       }),
     ]),
     query(':enter', [style({ left: '-100%' })]),
-    query(':leave', animateChild()),
+    query(':leave', animateChild(), { optional: true }),
     group([
-      query(':leave', [animate('500ms ease-in-out', style({ left: '100%' }))]),
+      query(':leave', [animate('500ms ease-in-out', style({ left: '100%' }))], {
+        optional: true,
+      }),
       query(':enter', [animate('500ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
