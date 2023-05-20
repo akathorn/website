@@ -4,6 +4,19 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+.monospace {
+  font-family: "Roboto Mono", monospace;
+}
+
+.blurry {
+  filter: blur(1px);
+}
+
+.shadow {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .box {
