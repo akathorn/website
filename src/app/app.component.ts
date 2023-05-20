@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // TODO: go through this again
+    // Maybe just give each page a "z-value" and animate based on that
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         if (event.id == 1) {

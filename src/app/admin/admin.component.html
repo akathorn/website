@@ -7,7 +7,7 @@
 
     <h2>Tags</h2>
     <p *ngFor="let tag of tags$ | async">
-        {{tag.id}} - {{tag.name}}: {{tag.description}}
+        {{tag | json}} <a [routerLink]="['/blog', tag.id]"><mat-icon>link</mat-icon></a>
     </p>
     <h3>Add tag</h3>
     <div class="add-tag">

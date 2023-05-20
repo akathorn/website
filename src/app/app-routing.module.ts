@@ -10,8 +10,9 @@ import { PostViewComponent } from './blog/post-view/post-view.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'blog', component: BlogComponent },
   { path: 'blog/post/:id', component: PostViewComponent },
+  { path: 'blog/:tag', component: BlogComponent },
+  { path: 'blog', component: BlogComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signInWithEmail', component: RedirectComponent },
   { path: 'admin', component: AdminComponent },
