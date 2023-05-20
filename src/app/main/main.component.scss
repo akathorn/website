@@ -1,14 +1,14 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
 }
 
 .box {
   max-width: 800px;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 10px;
   padding: 2rem;
   border: 2px dashed #3f3f3f;
 }
@@ -44,7 +44,6 @@ a {
 .bio div {
   font-size: 1.1rem;
   line-height: 1.8;
-  text-align: justify;
 }
 
 .contact {
