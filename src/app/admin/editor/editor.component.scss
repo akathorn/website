@@ -1,6 +1,8 @@
+@import "../../../styles.scss";
+
 .editor {
   form {
-    max-width: 800px;
+    max-width: $post-width;
     display: flex;
     flex-direction: column;
     justify-content: center;

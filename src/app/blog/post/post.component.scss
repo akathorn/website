@@ -1,5 +1,7 @@
+@import "../../../styles.scss";
+
 .post {
-  max-width: 800px;
+  max-width: $post-width;
   margin: 10px;
   padding: 2rem;
   border: 2px dashed #3f3f3f;
