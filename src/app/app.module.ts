@@ -26,8 +26,8 @@ import { RedirectComponent } from './admin/login/redirect/redirect.component';
 import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
-import { EditorComponent } from './blog/editor/editor.component';
-import { TagSelectorComponent } from './blog/editor/tag-selector/tag-selector.component';
+import { EditorComponent } from './admin/editor/editor.component';
+import { TagSelectorComponent } from './admin/editor/tag-selector/tag-selector.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 
 @NgModule({
