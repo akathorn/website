@@ -29,7 +29,7 @@ import { PostComponent } from './blog/post/post.component';
 import { EditorComponent } from './admin/editor/editor.component';
 import { TagSelectorComponent } from './admin/editor/tag-selector/tag-selector.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
-import { FloatingToolbarComponent } from './blog/floating-toolbar/floating-toolbar.component';
+import { FloatingToolbarComponent } from './floating-toolbar/floating-toolbar.component';
 
 @NgModule({
   declarations: [
