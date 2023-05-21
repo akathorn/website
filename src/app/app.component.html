@@ -1,3 +1,5 @@
-<div [@routeAnimations]="navigation" (@routeAnimations.done)="resetAnimationState()">
+<app-floating-toolbar></app-floating-toolbar>
+
+<div class="content" [@routeAnimations]="navigation" (@routeAnimations.done)="resetAnimationState()">
     <router-outlet></router-outlet>
 </div>

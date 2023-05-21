@@ -1,5 +1,3 @@
-<app-floating-toolbar></app-floating-toolbar>
-
 <div class="container">
     <div *ngFor="let post of posts$ | async; let i = index;">
         <app-post [post]="post" [fadeInDelay]="i * 250"></app-post>
