@@ -34,6 +34,9 @@ export class PostViewComponent implements OnInit, OnDestroy {
       .subscribe((post) => {
         this.post = post;
       });
+    setTimeout(() => {
+      window.scrollTo({ top: 0 });
+    }, 300);
   }
 
   ngOnDestroy(): void {
