@@ -7,7 +7,9 @@
 
     <h2>Tags</h2>
     <p *ngFor="let tag of tags$ | async">
-        {{tag | json}} <a [routerLink]="['/blog', tag.id]"><mat-icon>link</mat-icon></a>
+        {{tag | json}}
+        <a [routerLink]="['/blog', tag.id]"><mat-icon>link</mat-icon></a>
+        <button mat-button (click)="deleteTag(tag.id)"><mat-icon>delete</mat-icon></button>
     </p>
     <h3>Add tag</h3>
     <div class="add-tag">
@@ -34,6 +36,7 @@
     <h2>Published posts</h2>
     <p *ngFor="let post of posts$ | async">
         <a [routerLink]="['/blog/post', post.id]">{{post.title || "[untitled]"}} - {{post.id}}</a>
+        <button mat-button (click)="deletePost(post.id)"><mat-icon>delete</mat-icon></button>
     </p>
 
 </div>

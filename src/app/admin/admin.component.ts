@@ -56,4 +56,26 @@ export class AdminComponent {
       console.log('Tag created');
     });
   }
+
+  deleteTag(tagId: string) {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this tag?'
+    );
+    if (shouldDelete) {
+      this.tagsService.deleteTag(tagId).subscribe(() => {
+        console.log('Tag deleted');
+      });
+    }
+  }
+
+  deletePost(postId: string) {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this post?'
+    );
+    if (shouldDelete) {
+      this.postsService.deletePost(postId).subscribe(() => {
+        console.log('Post deleted');
+      });
+    }
+  }
 }
