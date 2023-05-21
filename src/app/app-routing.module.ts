@@ -12,24 +12,30 @@ import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
 
 const adminOnly = () => hasCustomClaim('admin');
 
+// NOTE: Maximum animationX is 3, if you want to add more animations, you need to add more
+// animations in the animations.ts file
 const routes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'blog/post/:id', component: PostViewComponent },
-  { path: 'blog/:tag', component: BlogComponent },
-  { path: 'blog', component: BlogComponent },
+  { path: '', component: MainComponent, data: { animationX: '0' } },
+  {
+    path: 'blog/post/:id',
+    component: PostViewComponent,
+    data: { animationX: 3 },
+  },
+  { path: 'blog/:tag', component: BlogComponent, data: { animationX: '2' } },
+  { path: 'blog', component: BlogComponent, data: { animationX: '1' } },
   { path: 'login', component: LoginComponent },
   { path: 'signInWithEmail', component: RedirectComponent },
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: { authGuardPipe: adminOnly },
+    data: { authGuardPipe: adminOnly, animationX: '1' },
   },
   {
     path: 'admin/draft/:id',
     component: EditorComponent,
     canActivate: [AuthGuard],
-    data: { authGuardPipe: adminOnly },
+    data: { authGuardPipe: adminOnly, animationX: '2' },
   },
 ];
 
