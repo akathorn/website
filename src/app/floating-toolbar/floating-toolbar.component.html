@@ -1,10 +1,17 @@
 <div color="primary" class="floating-toolbar mat-elevation-z4" [@openClose]="showToolbar ? 'open' : 'closed'">
-    <a [routerLink]="['/blog']" routerLinkActive="current" [routerLinkActiveOptions]="{exact:
-        true}">
-        <mat-icon>menu_book</mat-icon> blog
-    </a>
     <a [routerLink]="['/']" routerLinkActive="current" [routerLinkActiveOptions]="{exact:
     true}">
         <mat-icon>emoji_people</mat-icon> about daniel
     </a>
+    <a [routerLink]="['/blog']" routerLinkActive="current" [routerLinkActiveOptions]="{exact:
+        true}">
+        <mat-icon>menu_book</mat-icon> blog
+    </a>
+    <a [matMenuTriggerFor]="menu">
+        <mat-icon>folder_copy</mat-icon> tags
+    </a>
+    <mat-menu #menu="matMenu">
+        <button *ngFor="let tag of tags$ | async" mat-menu-item [routerLink]="['/blog',
+        tag.id]">{{tag.name}}</button>
+    </mat-menu>
 </div>

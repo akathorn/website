@@ -6,6 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { TagsService } from '../services/blog/tags.service';
 
 const openStyle = style({
   transform: 'translateY(0%) translateX(-50%)',
@@ -31,8 +32,9 @@ const closedStyle = style({
 export class FloatingToolbarComponent implements OnInit, OnDestroy {
   showToolbar = false;
   lastScrollTop = 0;
+  tags$ = this.tagsService.tags$;
 
-  constructor() {}
+  constructor(private tagsService: TagsService) {}
 
   ngOnInit(): void {
     console.log('Init');
