@@ -1,0 +1,16 @@
+.floating-toolbar {
+  position: fixed;
+  top: 20px; /* Margin from top */
+  left: 50%; /* Center toolbar */
+  transform: translateX(-50%); /* Necessary for true centering */
+  z-index: 1000;
+  width: 600px; /* Set the width */
+  max-width: 90%; /* Ensure it doesn't overflow small screens */
+  padding: 10px;
+  background-color: rgb(243, 243, 243); /* Set background color */
+  border: 0px solid grey; /* Set border */
+  border-radius: 25px; /* Make borders round */
+  display: flex; /* Align items in a row */
+  justify-content: space-between; /* Even space between items */
+  transition: transform 0.3s ease-in-out;
+}
