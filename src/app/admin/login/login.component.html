@@ -1,22 +1,32 @@
 <div class="container">
-    <div *ngIf="!emailSent" class="box mat-elevation-z8">
-        <h1>Login</h1>
-        <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" type="email" required>
-                <mat-error *ngIf="emailForm.get('email')?.errors && emailForm.get('email')?.touched">
-                    <span *ngIf="emailForm.get('email')?.hasError('required')">Email is required</span>
-                    <span *ngIf="emailForm.get('email')?.hasError('email')">Invalid email format</span>
-                </mat-error>
-            </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!emailForm.valid">Submit</button>
-        </form>
-    </div>
-    <div *ngIf="emailSent" class="box mat-elevation-z8">
-        <h1>Check your email</h1>
-        <p>We've sent you an email to log in. You can close this page now.</p>
-        <p>The email doesn't arrive? Make sure you wrote your email correctly, and check your spam folder. Refresh the
-            page to try again.</p>
-    </div>
+    <ng-container *ngIf="user$ | async">
+        <button mat-raised-button color="primary" (click)="signOut()">Logout</button>
+    </ng-container>
+    <ng-container *ngIf="!(user$ | async)">
+        <div *ngIf="!emailSent && !sendingEmail" class="box mat-elevation-z8">
+            <h1>Login</h1>
+            <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput name="email" formControlName="email" type="email" required autocomplete="email">
+                    <mat-error *ngIf="emailForm.get('email')?.errors && emailForm.get('email')?.touched">
+                        <span *ngIf="emailForm.get('email')?.hasError('required')">Email is required</span>
+                        <span *ngIf="emailForm.get('email')?.hasError('email')">Invalid email format</span>
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!emailForm.valid">Submit</button>
+            </form>
+        </div>
+        <div *ngIf="sendingEmail" class="box mat-elevation-z8">
+            <h1>Sending email</h1>
+        </div>
+        <div *ngIf="emailSent" class="box mat-elevation-z8">
+            <h1>Check your email</h1>
+            <p>We've sent you an email to log in. You can close this page now.</p>
+            <p>The email doesn't arrive? Make sure you wrote your email correctly, and check your spam folder. Refresh
+                the
+                page to try again.</p>
+        </div>
+    </ng-container>
+
 </div>

@@ -8,6 +8,10 @@ import { BlogComponent } from './blog/blog/blog.component';
 import { EditorComponent } from './admin/editor/editor.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 
+import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
+
+const adminOnly = () => hasCustomClaim('admin');
+
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'blog/post/:id', component: PostViewComponent },
@@ -15,8 +19,18 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signInWithEmail', component: RedirectComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/draft/:id', component: EditorComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: adminOnly },
+  },
+  {
+    path: 'admin/draft/:id',
+    component: EditorComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: adminOnly },
+  },
 ];
 
 @NgModule({
