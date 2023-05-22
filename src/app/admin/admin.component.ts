@@ -14,8 +14,8 @@ export class AdminComponent {
   posts$ = this.postsService.posts$;
   drafts$ = this.postsService.drafts$;
   tags$ = this.tagsService.tags$;
-  newDraftId = '';
 
+  newDraftId = '';
   newTag: Tag = {
     id: '',
     name: '',
@@ -36,24 +36,24 @@ export class AdminComponent {
 
   createDraft() {
     if (this.newDraftId === '') {
-      console.log('Please enter a draft ID');
+      window.alert('Please enter a draft ID');
       return;
     }
     this.postsService.createDraft(this.newDraftId).subscribe(() => {
-      console.log('Draft created');
+      window.alert('Draft created');
     });
   }
 
   createTag() {
     if (this.newTag.id === '') {
-      console.log('Please enter a tag ID');
+      window.alert('Please enter a tag ID');
       return;
     }
     // Remove id from tag object
     let tagData: TagData & { id?: string } = { ...this.newTag };
     delete tagData.id;
     this.tagsService.createTag(this.newTag.id, tagData).subscribe(() => {
-      console.log('Tag created');
+      window.alert('Tag created');
     });
   }
 
@@ -63,7 +63,7 @@ export class AdminComponent {
     );
     if (shouldDelete) {
       this.tagsService.deleteTag(tagId).subscribe(() => {
-        console.log('Tag deleted');
+        window.alert('Tag deleted');
       });
     }
   }
@@ -74,7 +74,7 @@ export class AdminComponent {
     );
     if (shouldDelete) {
       this.postsService.deletePost(postId).subscribe(() => {
-        console.log('Post deleted');
+        window.alert('Post deleted');
       });
     }
   }

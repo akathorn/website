@@ -1,19 +1,30 @@
-<div *ngIf="user$ | async">
-    <p>Signed in!</p>
-    <button mat-raised-button color="primary" (click)="signOut()">Logout</button>
+<div class="user-status" *ngIf="!(user$ | async)">
+    <p class="status-text">Not signed in!</p>
+</div>
 
-    <input matInput placeholder="Draft id" [(ngModel)]="newDraftId">
-    <button mat-raised-button color="primary" (click)="createDraft()">Create draft</button>
+<div class="user-status" *ngIf="user$ | async">
+    <button class="logout-button" mat-raised-button color="primary" (click)="signOut()">Logout</button>
 
-    <h2>Tags</h2>
-    <p *ngFor="let tag of tags$ | async">
-        {{tag | json}}
-        <a [routerLink]="['/blog', tag.id]"><mat-icon>link</mat-icon></a>
-        <button mat-button (click)="deleteTag(tag.id)"><mat-icon>delete</mat-icon></button>
-    </p>
-    <h3>Add tag</h3>
-    <div class="add-tag">
-        <form>
+    <div class="draft-creation">
+        <input class="draft-input" matInput placeholder="Draft id" [(ngModel)]="newDraftId">
+        <button class="create-draft-button" mat-raised-button color="primary" (click)="createDraft()">Create
+            draft</button>
+    </div>
+
+    <section class="tags">
+        <h2>Tags</h2>
+        <ul>
+            <li *ngFor="let tag of tags$ | async" class="tag-item">
+                {{tag | json}}
+                <div class="tag-controls">
+                    <a [routerLink]="['/blog', tag.id]"><mat-icon>link</mat-icon></a>
+                    <button mat-button (click)="deleteTag(tag.id)"><mat-icon>delete</mat-icon></button>
+                </div>
+            </li>
+        </ul>
+
+        <h3>Add tag</h3>
+        <form class="add-tag-form">
             <mat-form-field>
                 <mat-label>Id</mat-label>
                 <input matInput name="id" placeholder="Tag id" [(ngModel)]="newTag.id">
@@ -26,20 +37,26 @@
                 <mat-label>Description</mat-label>
                 <input matInput name="description" placeholder="Tag description" [(ngModel)]="newTag.description">
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="createTag()">Create Tag</button>
+            <button type="submit" mat-raised-button color="primary" (click)="createTag()">Create Tag</button>
         </form>
-    </div>
-    <h2>Drafts</h2>
-    <p *ngFor="let draft of drafts$ | async">
-        <a [routerLink]="['/admin', 'draft', draft.id]">{{draft.title || "[untitled]"}} - {{draft.id}}</a>
-    </p>
-    <h2>Published posts</h2>
-    <p *ngFor="let post of posts$ | async">
-        <a [routerLink]="['/blog/post', post.id]">{{post.title || "[untitled]"}} - {{post.id}}</a>
-        <button mat-button (click)="deletePost(post.id)"><mat-icon>delete</mat-icon></button>
-    </p>
+    </section>
 
-</div>
-<div *ngIf="!(user$ | async)">
-    <p>Not signed in!</p>
+    <section class="drafts">
+        <h2>Drafts</h2>
+        <ul>
+            <li *ngFor="let draft of drafts$ | async">
+                <a [routerLink]="['/admin', 'draft', draft.id]">{{draft.title || "[untitled]"}} - {{draft.id}}</a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="posts">
+        <h2>Published posts</h2>
+        <ul>
+            <li *ngFor="let post of posts$ | async">
+                <a [routerLink]="['/blog/post', post.id]">{{post.title || "[untitled]"}} - {{post.id}}</a>
+                <button mat-button (click)="deletePost(post.id)"><mat-icon>delete</mat-icon></button>
+            </li>
+        </ul>
+    </section>
 </div>

@@ -35,6 +35,11 @@ export class EditorComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.subscribeGetDraft();
+    this.subscribeToEditorForm();
+  }
+
+  private subscribeGetDraft() {
     // Loads the draft from the database, and sets the form values to the draft's values if the form
     // hasn't been loaded yet
     this.draftSubscription = this.activatedRoute.params
@@ -50,20 +55,29 @@ export class EditorComponent implements OnDestroy, OnInit {
       .subscribe((draft) => {
         this.draft = draft;
         if (!this.formLoaded) {
-          // Format the date as `yyyy-MM-ddThh:mmZ`
-          let publishedDate = draft.published_date?.toDate().toISOString();
-          // Remove the Z at the end of the string
-          publishedDate = publishedDate?.substring(0, publishedDate.length - 1);
-          this.editorForm.patchValue({
-            title: draft.title,
-            subtitle: draft.subtitle,
-            content: draft.content,
-            published_date: publishedDate,
-          });
-          this.formLoaded = true;
-          this.tags = draft.tags;
+          // If it's the first time, we load the data to the form
+          this.loadDraftToForm(draft);
         }
       });
+  }
+
+  private loadDraftToForm(draft: Post) {
+    // Loads the draft to the form
+    // Format the date as `yyyy-MM-ddThh:mmZ`
+    let publishedDate = draft.published_date?.toDate().toISOString();
+    // Remove the Z at the end of the string
+    publishedDate = publishedDate?.substring(0, publishedDate.length - 1);
+    this.editorForm.patchValue({
+      title: draft.title,
+      subtitle: draft.subtitle,
+      content: draft.content,
+      published_date: publishedDate,
+    });
+    this.formLoaded = true;
+    this.tags = draft.tags;
+  }
+
+  private subscribeToEditorForm() {
     // Subscribes to changes on the editor form, and updates the draft in the database
     this.editorSubscription = this.editorForm.valueChanges
       .pipe(
@@ -95,7 +109,6 @@ export class EditorComponent implements OnDestroy, OnInit {
   }
 
   tagsChange(tags: string[]): void {
-    console.log(tags);
     this.tags = tags;
     this.postsService.updateDraft(this.draft!.id, { tags }).subscribe();
   }
@@ -103,7 +116,6 @@ export class EditorComponent implements OnDestroy, OnInit {
   openDateDialog(event: any): void {
     event.preventDefault();
     event.stopPropagation();
-    // Get the input element that triggered the event
     event.target.showPicker();
   }
 
