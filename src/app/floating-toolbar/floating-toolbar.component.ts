@@ -5,16 +5,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TagsService } from '../services/blog/tags.service';
-
-const openStyle = style({
-  transform: 'translateY(0%) translateX(-50%)',
-});
-
-const closedStyle = style({
-  transform: 'translateY(-200%) translateX(-50%)',
-});
 
 @Component({
   selector: 'app-floating-toolbar',
@@ -22,37 +14,40 @@ const closedStyle = style({
   styleUrls: ['./floating-toolbar.component.scss'],
   animations: [
     trigger('openClose', [
-      state('open', openStyle),
-      state('closed', closedStyle),
-      transition('open => closed', [animate('0.2s')]),
-      transition('closed => open', [animate('0.2s 0.1s')]),
+      state(
+        'open',
+        style({
+          transform: 'translateY(0%) translateX(-50%)',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          transform: 'translateY(-200%) translateX(-50%)',
+        })
+      ),
+      transition('closed <=> open', [animate('0.2s 0.1s')]),
     ]),
   ],
 })
-export class FloatingToolbarComponent implements OnInit, OnDestroy {
-  showToolbar = false;
+export class FloatingToolbarComponent {
+  toolbarState = 'closed';
   lastScrollTop = 0;
   tags$ = this.tagsService.tags$;
 
-  constructor(private tagsService: TagsService) {}
-
-  ngOnInit(): void {
-    console.log('Init');
+  constructor(private tagsService: TagsService) {
     setTimeout(() => {
-      this.showToolbar = true;
+      this.toolbarState = 'open';
     }, 200);
-  }
-
-  ngOnDestroy(): void {
-    console.log('destroy');
-    this.showToolbar = false;
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    // Make the toolbar disappear/reappear as the user scrolls
     const currentScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
-    this.showToolbar = currentScrollTop <= this.lastScrollTop;
+    this.toolbarState =
+      currentScrollTop <= this.lastScrollTop ? 'open' : 'closed';
     this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
   }
 }

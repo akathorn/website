@@ -18,6 +18,7 @@ export class BlogComponent implements OnDestroy {
     private activatedRoute: ActivatedRoute,
     private blogService: PostsService
   ) {
+    // Get posts filtering by tag
     this.routeSubscription = this.activatedRoute.params.subscribe((params) => {
       let tag = params['tag'];
       this.posts$ = this.blogService.posts$.pipe(
