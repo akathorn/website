@@ -32,7 +32,7 @@ import { EditorComponent } from './admin/editor/editor.component';
 import { TagSelectorComponent } from './admin/editor/tag-selector/tag-selector.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 import { FloatingToolbarComponent } from './floating-toolbar/floating-toolbar.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
+import { UploadImageComponent } from './admin/upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
