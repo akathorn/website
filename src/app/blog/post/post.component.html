@@ -3,6 +3,7 @@
             "Untitled"}} <mat-icon>link</mat-icon></a></h2>
     <h3 class="subtitle">{{post.subtitle}}</h3>
     <p class="date">{{this.post.published_date?.toDate() | date}}</p>
+    <img *ngIf="post.image" width="300px" [src]="post.image.url" alt="Post image">
     <p class="content">{{post.content || "No content"}}</p>
     <div class="tags">
         <span class="tag" *ngFor="let tag of post.tags"><a [routerLink]="['/blog',

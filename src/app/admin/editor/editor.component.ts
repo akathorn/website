@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map, mergeMap } from 'rxjs';
 import { Post } from 'src/app/models/blog';
+import { ImageService } from 'src/app/services/blog/image.service';
 import { PostsService } from 'src/app/services/blog/posts.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class EditorComponent implements OnDestroy, OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -125,5 +127,17 @@ export class EditorComponent implements OnDestroy, OnInit {
         .publishDraft(this.draft!.id)
         .subscribe(() => window.alert('Post published!'));
     }
+  }
+
+  imageUploaded(url: string): void {
+    this.postsService
+      .updateDraft(this.draft!.id, { image: { url } })
+      .subscribe();
+  }
+
+  deletePostImage(): void {
+    this.imageService.deletePostImage(this.draft!.id).subscribe(() => {
+      this.postsService.deleteFields(this.draft!.id, ['image']);
+    });
   }
 }

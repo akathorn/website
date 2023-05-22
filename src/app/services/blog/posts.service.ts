@@ -10,6 +10,7 @@ import {
   orderBy,
   query,
   setDoc,
+  deleteField,
 } from '@angular/fire/firestore';
 import { Observable, from, map, mergeMap } from 'rxjs';
 import { Post, PostData } from 'src/app/models/blog';
@@ -76,6 +77,15 @@ export class PostsService {
   deleteDraft(id: string): Observable<void> {
     let draftRef = doc(this.draftsCollection, id);
     return from(deleteDoc(draftRef));
+  }
+
+  deleteFields(id: string, fields: string[]): Observable<void> {
+    let draftRef = doc(this.draftsCollection, id);
+    let fieldsObject: any = {};
+    fields.forEach((field) => {
+      fieldsObject[field] = deleteField();
+    });
+    return from(setDoc(draftRef, fieldsObject, { merge: true }));
   }
 
   publishDraft(id: string): Observable<void> {

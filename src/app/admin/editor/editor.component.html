@@ -1,11 +1,11 @@
-<a [routerLink]="['/admin']"><mat-icon>home</mat-icon></a>
+<a [routerLink]="['/admin']"><mat-icon>home</mat-icon>admin</a>
 
 <div *ngIf="!draft">
     Draft not found
 </div>
 
-<ng-container *ngIf="draft">
-    <div class="editor">
+<div class="container" *ngIf="draft">
+    <div class="box editor">
         <h1>Editor</h1>
         <form [formGroup]="editorForm">
             <mat-form-field>
@@ -29,14 +29,18 @@
                 <app-tag-selector [tags]="tags" (tagsChange)="tagsChange($event)"></app-tag-selector>
             </div>
         </form>
+        <div class="actions">
+            <app-upload-image [postId]="this.draft.id" *ngIf="!draft.image"
+                (imageUploaded)="imageUploaded($event)"></app-upload-image>
+            <button mat-raised-button color="primary" (click)="deletePostImage()" *ngIf="draft.image">Delete
+                image</button>
+            <button mat-raised-button color="primary" (click)="deleteDraft()">Delete</button>
+            <button mat-raised-button color="primary" (click)="publishDraft()">Publish</button>
+            <a [routerLink]="['/blog/post', draft.id]">View</a>
+        </div>
     </div>
-    <div class="actions">
-        <button mat-raised-button color="primary" (click)="deleteDraft()">Delete</button>
-        <button mat-raised-button color="primary" (click)="publishDraft()">Publish</button>
-        <a [routerLink]="['/blog/post', draft.id]">View</a>
-    </div>
-    <div class="preview">
+    <div class="box preview">
         <h1>Preview</h1>
         <app-post [post]="draft"></app-post>
     </div>
-</ng-container>
+</div>
