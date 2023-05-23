@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription, map, mergeMap } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { Post } from 'src/app/models/blog';
 import { PostsService } from 'src/app/services/blog/posts.service';
 
@@ -9,24 +10,23 @@ import { PostsService } from 'src/app/services/blog/posts.service';
   templateUrl: './post-view.component.html',
   styleUrls: ['./post-view.component.scss'],
 })
-export class PostViewComponent implements OnInit, OnDestroy {
+export class PostViewComponent implements OnDestroy {
   post?: Post;
-
-  private postSubscription?: Subscription;
+  postSubscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postsService: PostsService
-  ) {}
-
-  ngOnInit(): void {
+    private postsService: PostsService,
+    private router: Router
+  ) {
     this.postSubscription = this.activatedRoute.params
       .pipe(
-        mergeMap((params) => this.postsService.getPost(params['id'])),
+        map((params) => params['id']),
+        mergeMap((id) => this.postsService.getPost(id)),
         map((post) => {
-          if (post === undefined) {
-            // TODO: Redirect to 404 page
-            throw new Error('Draft not found');
+          if (!post) {
+            this.router.navigateByUrl('/404'); // redirect to 404 page
+            throw new Error('Post not found');
           }
           return post;
         })
@@ -39,7 +39,7 @@ export class PostViewComponent implements OnInit, OnDestroy {
     }, 300);
   }
 
-  ngOnDestroy(): void {
-    this.postSubscription?.unsubscribe();
+  ngOnDestroy() {
+    this.postSubscription.unsubscribe();
   }
 }

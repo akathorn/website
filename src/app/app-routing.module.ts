@@ -9,6 +9,7 @@ import { EditorComponent } from './admin/editor/editor.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 
 import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 const adminOnly = () => hasCustomClaim('admin');
 
@@ -37,6 +38,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: adminOnly, animationX: '2' },
   },
+  { path: '**', component: NotFoundComponent, data: { animationX: '3' }},
 ];
 
 @NgModule({

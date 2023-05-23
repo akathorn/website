@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, map, of } from 'rxjs';
 import { Post } from 'src/app/models/blog';
 import { PostsService } from 'src/app/services/blog/posts.service';
@@ -10,28 +10,31 @@ import { PostsService } from 'src/app/services/blog/posts.service';
   styleUrls: ['./blog.component.scss'],
 })
 export class BlogComponent implements OnDestroy {
-  posts$: Observable<Post[]> = of([]);
-
-  private routeSubscription?: Subscription;
+  posts$ = of<Post[]>([]);
+  routeSubscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private blogService: PostsService
+    private postService: PostsService,
+    private router: Router // add Router to the constructor
   ) {
-    // Get posts filtering by tag
     this.routeSubscription = this.activatedRoute.params.subscribe((params) => {
       let tag = params['tag'];
-      this.posts$ = this.blogService.posts$.pipe(
+      this.posts$ = this.postService.posts$.pipe(
         map((posts) => {
-          return posts.filter((post) => {
+          let filteredPosts = posts.filter((post) => {
             return post.tags.includes(tag) || tag === undefined;
           });
+          if (filteredPosts.length === 0) {
+            this.router.navigateByUrl('/404'); // redirect to 404 page
+          }
+          return filteredPosts;
         })
       );
     });
   }
 
-  ngOnDestroy(): void {
-    this.routeSubscription?.unsubscribe();
+  ngOnDestroy() {
+    this.routeSubscription.unsubscribe();
   }
 }

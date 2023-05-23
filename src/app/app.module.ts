@@ -33,6 +33,7 @@ import { TagSelectorComponent } from './admin/editor/tag-selector/tag-selector.c
 import { PostViewComponent } from './blog/post-view/post-view.component';
 import { FloatingToolbarComponent } from './floating-toolbar/floating-toolbar.component';
 import { UploadImageComponent } from './admin/upload-image/upload-image.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { UploadImageComponent } from './admin/upload-image/upload-image.componen
     PostViewComponent,
     FloatingToolbarComponent,
     UploadImageComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
