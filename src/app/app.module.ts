@@ -20,6 +20,9 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
+// Other
+import { MarkdownModule } from 'ngx-markdown';
+
 // Components
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -69,6 +72,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    // Other
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
