@@ -11,6 +11,7 @@ import {
   query,
   setDoc,
   deleteField,
+  Timestamp,
 } from '@angular/fire/firestore';
 import { Observable, from, map, mergeMap } from 'rxjs';
 import { Post, PostData } from 'src/app/models/blog';
@@ -39,7 +40,7 @@ export class PostsService {
       `/users/${environment.authorId}/drafts`
     ) as CollectionReference<Post>;
     this.drafts$ = collectionData(
-      query(this.draftsCollection, orderBy('published_date', 'desc')),
+      query(this.draftsCollection, orderBy('created_at', 'desc')),
       { idField: 'id' }
     );
   }
@@ -51,12 +52,13 @@ export class PostsService {
     );
   }
 
-  createDraft(id: string, data?: PostData): Observable<void> {
-    let draft: PostData = data || {
+  createDraft(id: string, data?: Partial<PostData>): Observable<void> {
+    let draft: PostData = (data || {}) && {
       title: '',
       subtitle: '',
       content: '',
       tags: [],
+      created_at: new Timestamp(new Date().getTime() / 1000, 0),
     };
     let draftRef = doc(this.draftsCollection, id);
     return from(getDoc(draftRef)).pipe(

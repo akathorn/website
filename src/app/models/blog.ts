@@ -4,6 +4,7 @@ export type PostData = {
   title: string;
   subtitle: string;
   content: string;
+  created_at: Timestamp;
   published_date?: Timestamp;
   image?: Image;
   tags: string[];
