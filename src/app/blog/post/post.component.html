@@ -15,10 +15,12 @@
     <div class="content">
         <div *ngIf="!collapsible" markdown clipboard [data]="post.content"></div>
         <ng-container *ngIf="collapsible">
-            <div *ngIf="!isExpanded" markdown clipboard [data]="firstFragment"></div>
-            <button mat-button *ngIf="!isExpanded && !isShortPost" (click)="toggleExpand()">Read more...</button>
-            <div *ngIf="isExpanded" markdown clipboard [data]="post.content"></div>
-            <button mat-button *ngIf="isExpanded" (click)="toggleExpand()">Show less</button>
+            <div markdown clipboard [data]="firstParagraph"></div>
+            <div markdown clipboard [data]="remainingParagraphs" class="remaining-paragraphs"
+                [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'"></div>
+            <button class="expand" mat-button *ngIf="!isExpanded && !isShortPost" (click)="toggleExpand()">Read
+                more...</button>
+            <button class="collapse" mat-button *ngIf="isExpanded" (click)="toggleExpand()">Read less</button>
         </ng-container>
     </div>
     <div class="tags">
