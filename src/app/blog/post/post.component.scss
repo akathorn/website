@@ -47,8 +47,15 @@
     white-space: pre-wrap;
     line-height: 1.6;
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-family: "Montserrat", sans-serif;
+
+    button {
+      margin-top: -4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Roboto Mono", monospace;
+    }
   }
 
   .tags {

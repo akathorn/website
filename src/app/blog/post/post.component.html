@@ -11,7 +11,16 @@
         {{this.post.published_date?.toDate() | date}}
     </p>
     <img class="image" *ngIf="post.image" width="300px" [src]="post.image.url" alt="Post image">
-    <div class="content" markdown clipboard [data]="post.content || 'No content'"></div>
+
+    <div class="content">
+        <div *ngIf="!collapsible" markdown clipboard [data]="post.content"></div>
+        <ng-container *ngIf="collapsible">
+            <div *ngIf="!isExpanded" markdown clipboard [data]="firstFragment"></div>
+            <button mat-button *ngIf="!isExpanded && !isShortPost" (click)="toggleExpand()">Read more...</button>
+            <div *ngIf="isExpanded" markdown clipboard [data]="post.content"></div>
+            <button mat-button *ngIf="isExpanded" (click)="toggleExpand()">Show less</button>
+        </ng-container>
+    </div>
     <div class="tags">
         <span class="tag" *ngFor="let tag of post.tags">
             <a [routerLink]="['/blog', tag]">{{tag}}</a>
