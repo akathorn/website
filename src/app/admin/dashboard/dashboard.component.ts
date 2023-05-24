@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { PostsService } from '../services/blog/posts.service';
-import { TagsService } from '../services/blog/tags.service';
-import { Tag, TagData } from '../models/blog';
+import { AuthService } from '../../services/auth.service';
+import { PostsService } from '../../services/blog/posts.service';
+import { TagsService } from '../../services/blog/tags.service';
+import { Tag, TagData } from '../../models/blog';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
-export class AdminComponent {
+export class DashboardComponent {
   user$ = this.auth.user$;
   posts$ = this.postsService.posts$;
   drafts$ = this.postsService.drafts$;

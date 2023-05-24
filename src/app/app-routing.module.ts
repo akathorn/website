@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './admin/login/login.component';
-import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RedirectComponent } from './admin/login/redirect/redirect.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { EditorComponent } from './admin/editor/editor.component';
 import { PostViewComponent } from './blog/post-view/post-view.component';
 
 import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'signInWithEmail', component: RedirectComponent },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: DashboardComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: adminOnly, animationX: '1' },
   },
@@ -38,7 +38,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: adminOnly, animationX: '2' },
   },
-  { path: '**', component: NotFoundComponent, data: { animationX: '3' }},
+  { path: '**', component: NotFoundComponent, data: { animationX: '3' } },
 ];
 
 @NgModule({

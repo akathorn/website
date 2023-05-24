@@ -28,7 +28,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './admin/login/login.component';
 import { RedirectComponent } from './admin/login/redirect/redirect.component';
-import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { PostComponent } from './blog/post/post.component';
 import { EditorComponent } from './admin/editor/editor.component';
@@ -44,7 +44,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MainComponent,
     LoginComponent,
     RedirectComponent,
-    AdminComponent,
+    DashboardComponent,
     BlogComponent,
     PostComponent,
     EditorComponent,
