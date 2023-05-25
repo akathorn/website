@@ -6,26 +6,24 @@
   // NOTE: When adding new variables, remember to add them to the theme service
 
   //// Light theme ////
-  --light-background-color: #f7f7f7;
-  --light-text-color: #000000;
-  --light-shadow-color: rgba(0, 0, 0, 0.5);
-  --light-border-color: #8d8d8d;
-  --light-toolbar-background-color: #ffffff;
-  // Theme for posts
-  --light-subtitle-color: #777777;
+  --light-background-color: #f8f1e3;
+  --light-text-color: #4a4a4a;
+  --light-shadow-color: rgba(0, 0, 0, 0.3);
+  --light-border-color: #b8afa0;
+  --light-toolbar-background-color: #f8f1e3;
+  --light-subtitle-color: #6d6d6d;
   --light-date-color: #999999;
-  --light-tag-background-color: #e2e2e2;
+  --light-tag-background-color: #e2d4c7;
 
   //// Dark theme ////
-  --dark-background-color: #1f1f1f;
-  --dark-text-color: #ffffff;
-  --dark-shadow-color: rgb(255, 255, 255);
-  --dark-border-color: #8d8d8d;
-  --dark-toolbar-background-color: #2f2f2f;
-  // Theme for posts
-  --dark-subtitle-color: #aaaaaa;
+  --dark-background-color: #2b2a27;
+  --dark-text-color: #f1eadb;
+  --dark-shadow-color: rgba(255, 255, 255, 0.2);
+  --dark-border-color: #696664;
+  --dark-toolbar-background-color: #373531;
+  --dark-subtitle-color: #b8afa0;
   --dark-date-color: #999999;
-  --dark-tag-background-color: #2f2f2f;
+  --dark-tag-background-color: #4a4743;
 
   //// Set default theme to light theme ////
   --background-color: var(--light-background-color);
