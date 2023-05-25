@@ -16,14 +16,14 @@
 }
 
 .shadow {
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 5px var(--shadow-color);
 }
 
 .box {
   max-width: 700px;
   margin: 10px;
   padding: 2rem;
-  border: 2px dashed #3f3f3f;
+  border: 2px dashed var(--border-color);
   border-radius: 5px;
 }
 
@@ -77,25 +77,25 @@ a {
 
 .r-q {
   color: #e74c3c; // red
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 .r-u {
   color: #f39c12; // orange
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 .r-e1 {
   color: #f1c40f; // yellow
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 .r-e2 {
   color: #2ecc71; // green
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 .r-r {
   color: #3498db; // blue
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }

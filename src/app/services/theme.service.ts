@@ -3,6 +3,16 @@ import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export type Theme = 'light' | 'dark';
+const themeVariables = [
+  'background-color',
+  'text-color',
+  'shadow-color',
+  'border-color',
+  'toolbar-background-color',
+  'subtitle-color',
+  'date-color',
+  'tag-background-color',
+];
 
 @Injectable({
   providedIn: 'root',
@@ -27,20 +37,11 @@ export class ThemeService {
     localStorage.setItem('theme', theme);
     this.currentTheme$.next(theme);
 
-    if (theme === 'light') {
-      console.log('Setting light theme');
+    for (let variable of themeVariables) {
       this.document.body.style.setProperty(
-        '--background-color',
-        'var(--light-background)'
+        `--${variable}`,
+        `var(--${theme}-${variable})`
       );
-      this.document.body.style.setProperty('--text-color', 'var(--light-text)');
-    } else {
-      console.log('Setting dark theme');
-      this.document.body.style.setProperty(
-        '--background-color',
-        'var(--dark-background)'
-      );
-      this.document.body.style.setProperty('--text-color', 'var(--dark-text)');
     }
   }
 

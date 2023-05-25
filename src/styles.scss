@@ -3,11 +3,39 @@
 
 // Themes
 :root {
-  --light-background: #f7f7f7;
-  --light-text: #000000;
+  // NOTE: When adding new variables, remember to add them to the theme service
 
-  --dark-background: #000000;
-  --dark-text: #ffffff;
+  //// Light theme ////
+  --light-background-color: #f7f7f7;
+  --light-text-color: #000000;
+  --light-shadow-color: rgba(0, 0, 0, 0.5);
+  --light-border-color: #8d8d8d;
+  --light-toolbar-background-color: #ffffff;
+  // Theme for posts
+  --light-subtitle-color: #777777;
+  --light-date-color: #999999;
+  --light-tag-background-color: #e2e2e2;
+
+  //// Dark theme ////
+  --dark-background-color: #1f1f1f;
+  --dark-text-color: #ffffff;
+  --dark-shadow-color: rgb(255, 255, 255);
+  --dark-border-color: #8d8d8d;
+  --dark-toolbar-background-color: #2f2f2f;
+  // Theme for posts
+  --dark-subtitle-color: #aaaaaa;
+  --dark-date-color: #999999;
+  --dark-tag-background-color: #2f2f2f;
+
+  //// Set default theme to light theme ////
+  --background-color: var(--light-background-color);
+  --text-color: var(--light-text-color);
+  --shadow-color: var(--light-shadow-color);
+  --border-color: var(--light-border-color);
+  --toolbar-background-color: var(--light-toolbar-background-color);
+  --subtitle-color: var(--light-subtitle-color);
+  --date-color: var(--light-date-color);
+  --tag-background-color: var(--light-tag-background-color);
 }
 
 html {

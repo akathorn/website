@@ -12,8 +12,8 @@
 
   // Border, padding, background
   padding: 10px;
-  background-color: rgb(243, 243, 243);
-  border: 0px solid grey;
+  background-color: var(--toolbar-background-color);
+  border: 0px solid var(--border-color);
   border-radius: 25px;
 
   // Container properties
@@ -54,7 +54,7 @@ a {
   }
 
   &:hover {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 5px var(--shadow-color);
   }
 }
 
@@ -63,6 +63,7 @@ button {
   padding: 0px;
   margin-right: 10px;
   margin-left: 10px;
+  color: var(--text-color);
 
   // Eliminate button style
   border: none;
@@ -72,6 +73,6 @@ button {
 
 .current {
   // Style for the link where we are right now
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 5px var(--shadow-color);
   filter: blur(1px);
 }
