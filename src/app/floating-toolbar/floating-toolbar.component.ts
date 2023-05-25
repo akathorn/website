@@ -6,7 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
-import { TagsService } from '../services/blog/tags.service';
+import { TagsService } from '../blog/services/tags.service';
 
 @Component({
   selector: 'app-floating-toolbar',

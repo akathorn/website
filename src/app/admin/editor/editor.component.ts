@@ -4,8 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, map, mergeMap } from 'rxjs';
 import { Post } from 'src/app/models/blog';
-import { ImageService } from 'src/app/services/blog/image.service';
-import { PostsService } from 'src/app/services/blog/posts.service';
+import { ImageService } from '../services/image.service';
+import { PostsService } from 'src/app/blog/services/posts.service';
 
 @Component({
   selector: 'app-editor',

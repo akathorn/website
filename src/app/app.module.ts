@@ -51,7 +51,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    // Other
   ],
   providers: [],
   bootstrap: [AppComponent],

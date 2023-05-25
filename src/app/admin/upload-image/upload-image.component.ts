@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ImageService } from '../../services/blog/image.service';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-upload-image',

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { Post } from 'src/app/models/blog';
-import { PostsService } from 'src/app/services/blog/posts.service';
+import { PostsService } from 'src/app/blog/services/posts.service';
 
 @Component({
   selector: 'app-post-view',

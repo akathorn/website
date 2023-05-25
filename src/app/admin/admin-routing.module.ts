@@ -6,6 +6,8 @@ import { EditorComponent } from './editor/editor.component';
 import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
 const adminOnly = () => hasCustomClaim('admin');
 
+// NOTE: Maximum animationX is 3, if you want to add more animations, you need to add more
+// animations in the animations.ts file
 const routes: Routes = [
   {
     path: '',

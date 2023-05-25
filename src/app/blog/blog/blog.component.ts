@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, map, of } from 'rxjs';
 import { Post } from 'src/app/models/blog';
-import { PostsService } from 'src/app/services/blog/posts.service';
+import { PostsService } from 'src/app/blog/services/posts.service';
 
 @Component({
   selector: 'app-blog',

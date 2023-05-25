@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatChipSelectionChange } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
-import { TagsService } from 'src/app/services/blog/tags.service';
+import { TagsService } from 'src/app/blog/services/tags.service';
 
 @Component({
   selector: 'app-tag-selector',
