@@ -58,6 +58,18 @@ a {
   }
 }
 
+button {
+  font-size: 0.9em;
+  padding: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  // Eliminate button style
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .current {
   // Style for the link where we are right now
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

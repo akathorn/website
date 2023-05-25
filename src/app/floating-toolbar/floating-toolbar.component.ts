@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
 import { TagsService } from '../blog/services/tags.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-floating-toolbar',
@@ -34,8 +35,12 @@ export class FloatingToolbarComponent {
   toolbarState = 'closed';
   lastScrollTop = 0;
   tags$ = this.tagsService.tags$;
+  theme$ = this.themeService.currentTheme$;
 
-  constructor(private tagsService: TagsService) {
+  constructor(
+    private tagsService: TagsService,
+    private themeService: ThemeService
+  ) {
     setTimeout(() => {
       this.toolbarState = 'open';
     }, 200);
@@ -45,9 +50,13 @@ export class FloatingToolbarComponent {
   onWindowScroll() {
     // Make the toolbar disappear/reappear as the user scrolls
     const currentScrollTop =
-      window.pageYOffset || document.documentElement.scrollTop;
+      window.scrollY || document.documentElement.scrollTop;
     this.toolbarState =
       currentScrollTop <= this.lastScrollTop ? 'open' : 'closed';
     this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
