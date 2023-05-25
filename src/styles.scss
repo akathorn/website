@@ -14,6 +14,7 @@
   --light-subtitle-color: #6d6d6d;
   --light-date-color: #999999;
   --light-tag-background-color: #e2d4c7;
+  --light-highlight-color: #f1eadb;
 
   //// Dark theme ////
   --dark-background-color: #2b2a27;
@@ -24,6 +25,7 @@
   --dark-subtitle-color: #b8afa0;
   --dark-date-color: #999999;
   --dark-tag-background-color: #4a4743;
+  --dark-highlight-color: #3c3b38;
 
   //// Set default theme to light theme ////
   --background-color: var(--light-background-color);
@@ -34,6 +36,7 @@
   --subtitle-color: var(--light-subtitle-color);
   --date-color: var(--light-date-color);
   --tag-background-color: var(--light-tag-background-color);
+  --highlight-color: var(--light-highlight-color);
 }
 
 html {

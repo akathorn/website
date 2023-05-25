@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -35,7 +35,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     // Material,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule,
+    CdkMenuModule,
     // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

@@ -60,7 +60,7 @@
       transform: translateX(-50%);
       font-family: "Roboto Mono", monospace;
       font-size: 0.9rem;
-      color: var(--border-color);
+      color: var(--text-color);
 
       &.expand {
         border-bottom: 1px dashed var(--border-color);

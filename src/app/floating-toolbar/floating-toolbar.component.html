@@ -7,15 +7,17 @@
         true}">
         <mat-icon>menu_book</mat-icon>blog
     </a>
-    <a [matMenuTriggerFor]="menu">
+    <a [cdkMenuTriggerFor]="menu">
         <mat-icon>folder_copy</mat-icon>tags
     </a>
-    <mat-menu #menu="matMenu">
-        <button *ngFor="let tag of tags$ | async" mat-menu-item [routerLink]="['/blog', tag.id]"
-            routerLinkActive="current" [routerLinkActiveOptions]="{exact: true}">
-            {{tag.name}}
-        </button>
-    </mat-menu>
+    <ng-template #menu>
+        <div class="menu" cdkMenu>
+            <button class="menu-item" cdkMenuItem *ngFor="let tag of tags$ | async" mat-menu-item
+                [routerLink]="['/blog', tag.id]" routerLinkActive="current" [routerLinkActiveOptions]="{exact: true}">
+                {{tag.name}}
+            </button>
+        </div>
+    </ng-template>
     <button class="toggle-theme" (click)="toggleTheme()">
         <mat-icon>{{(theme$ | async) == 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>

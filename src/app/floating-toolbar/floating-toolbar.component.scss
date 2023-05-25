@@ -76,3 +76,36 @@ button {
   text-shadow: 0 0 5px var(--shadow-color);
   filter: blur(1px);
 }
+
+.menu {
+  display: inline-flex;
+  flex-direction: column;
+  // min-width: 180px;
+  max-width: 280px;
+  background-color: var(--background-color);
+  padding: 6px 0;
+  border: 1px solid var(--border-color);
+}
+
+.menu-item {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+
+  user-select: none;
+  line-height: 36px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+
+  &:hover {
+    background-color: var(--highlight-color);
+  }
+
+  &:active {
+    background-color: var(--highlight-color);
+  }
+}

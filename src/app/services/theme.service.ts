@@ -12,6 +12,7 @@ const themeVariables = [
   'subtitle-color',
   'date-color',
   'tag-background-color',
+  'highlight-color',
 ];
 
 @Injectable({
