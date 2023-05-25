@@ -8,6 +8,6 @@ export const environment = {
     messagingSenderId: '917040968828',
     measurementId: 'G-9EGJREF117',
   },
-  emailSignInURL: 'http://localhost:4200/signInWithEmail',
+  emailSignInURL: 'http://localhost:4200/login/signInWithEmail',
   authorId: 'VazInX34YLYk2v7OXKfqK1WI6oj2',
 };

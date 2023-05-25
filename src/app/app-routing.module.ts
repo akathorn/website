@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
-import { RedirectComponent } from './login/redirect/redirect.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 // NOTE: Maximum animationX is 3, if you want to add more animations, you need to add more
 // animations in the animations.ts file
 const routes: Routes = [
   { path: '', component: MainComponent, data: { animationX: '0' } },
-  { path: 'login', component: LoginComponent },
-  { path: 'signInWithEmail', component: RedirectComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./auth/auth.module').then((m) => {
+        console.log('Loading auth module');
+        return m.AuthModule;
+      }),
+  },
   {
     path: 'admin',
     loadChildren: () =>
@@ -18,7 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'blog',
-    loadChildren: () => import('./blog/blog.module').then((m) => m.BlogModule),
+    loadChildren: () =>
+      import('./blog/blog.module').then((m) => {
+        console.log('Loading blog module');
+        return m.BlogModule;
+      }),
   },
   // 404
   { path: '**', component: NotFoundComponent, data: { animationX: '3' } },

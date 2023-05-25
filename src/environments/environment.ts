@@ -8,6 +8,6 @@ export const environment = {
     messagingSenderId: '917040968828',
     measurementId: 'G-9EGJREF117',
   },
-  emailSignInURL: 'https://daniel-espino-codes.web.app/signInWithEmail',
+  emailSignInURL: 'https://daniel-espino-codes.web.app/login/signInWithEmail',
   authorId: 'VazInX34YLYk2v7OXKfqK1WI6oj2',
 };

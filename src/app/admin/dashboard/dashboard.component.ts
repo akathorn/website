@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/services/auth.service';
 import { PostsService } from '../../blog/services/posts.service';
 import { TagsService } from '../../blog/services/tags.service';
 import { Tag, TagData } from '../../models/blog';
