@@ -19,9 +19,13 @@
     // Make images responsive
     max-width: 100%;
     height: auto;
-    // Wrap text around images
-    float: left;
-    margin-right: 1rem;
+    // Center image and add some space
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    // Add border
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
   }
 
   .title {
