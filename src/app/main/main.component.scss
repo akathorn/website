@@ -9,6 +9,10 @@
 
 .monospace {
   font-family: "Roboto Mono", monospace;
+  // Make it look more like code in a console
+  // background-color: #383838;
+  color: #00940c;
+  font-size: 0.9em;
 }
 
 .blurry {
@@ -16,7 +20,22 @@
 }
 
 .shadow {
-  text-shadow: 2px 2px 5px var(--shadow-color);
+  text-shadow: 2px 2px 2px var(--shadow-color);
+}
+
+.rainbow-text {
+  background: linear-gradient(
+    to left,
+    #e74c3c,
+    #f39c12,
+    #f1c40f,
+    #2ecc71,
+    #3498db
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 5px var(--shadow-color);
 }
 
 .box {
@@ -73,29 +92,4 @@ a {
     font-size: 1.2rem;
     margin-right: 0.5rem;
   }
-}
-
-.r-q {
-  color: #e74c3c; // red
-  text-shadow: 1px 1px 5px var(--shadow-color);
-}
-
-.r-u {
-  color: #f39c12; // orange
-  text-shadow: 1px 1px 5px var(--shadow-color);
-}
-
-.r-e1 {
-  color: #f1c40f; // yellow
-  text-shadow: 1px 1px 5px var(--shadow-color);
-}
-
-.r-e2 {
-  color: #2ecc71; // green
-  text-shadow: 1px 1px 5px var(--shadow-color);
-}
-
-.r-r {
-  color: #3498db; // blue
-  text-shadow: 1px 1px 5px var(--shadow-color);
 }
