@@ -27,16 +27,16 @@
   --dark-tag-background-color: #4a4743;
   --dark-highlight-color: #3c3b38;
 
-  //// Set default theme to light theme ////
-  --background-color: var(--light-background-color);
-  --text-color: var(--light-text-color);
-  --shadow-color: var(--light-shadow-color);
-  --border-color: var(--light-border-color);
-  --toolbar-background-color: var(--light-toolbar-background-color);
-  --subtitle-color: var(--light-subtitle-color);
-  --date-color: var(--light-date-color);
-  --tag-background-color: var(--light-tag-background-color);
-  --highlight-color: var(--light-highlight-color);
+  //// Set default theme to dark theme ////
+  --background-color: var(--dark-background-color);
+  --text-color: var(--dark-text-color);
+  --shadow-color: var(--dark-shadow-color);
+  --border-color: var(--dark-border-color);
+  --toolbar-background-color: var(--dark-toolbar-background-color);
+  --subtitle-color: var(--dark-subtitle-color);
+  --date-color: var(--dark-date-color);
+  --tag-background-color: var(--dark-tag-background-color);
+  --highlight-color: var(--dark-highlight-color);
 }
 
 html {

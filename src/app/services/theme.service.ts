@@ -28,10 +28,10 @@ export class ThemeService {
     const savedTheme = localStorage.getItem('theme') as Theme;
     const theme = savedTheme || (osPrefersDark ? 'dark' : 'light');
     this.currentTheme$.next(theme);
-    this.setTheme(theme);
 
-    console.log('OS prefers dark mode:', osPrefersDark);
-    console.log('Selected theme:', theme);
+    setTimeout(() => {
+      this.setTheme(theme);
+    }, 100);
   }
 
   public setTheme(theme: Theme): void {
